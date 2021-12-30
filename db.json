@@ -1,0 +1,28 @@
+{
+  "favorites": [
+    {
+      "id": 1,
+      "name": "Cleffa",
+      "number": "173",
+      "region": "Johto"
+    },
+    {
+      "id": 2,
+      "name": "Clefairy",
+      "number": "035",
+      "region": "Kanto"
+    },
+    {
+      "id": 3,
+      "name": "Clefable",
+      "number": "036",
+      "origin": "Kanto"
+    },
+    {
+      "name": "Squirtle",
+      "number": "007",
+      "region": "Kanto",
+      "id": 4
+    }
+  ]
+}
