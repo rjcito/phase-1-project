@@ -1,33 +1,30 @@
 const baseUrl ='http://localhost:3000';
 let pokemonAdded = [];
 
-//Node Getters 
-const homeLink = () => document.getElementById('home-page-link');
-const viewFavPokemonLink = () =>  document.getElementById('view-fav-pokemon');
-const inputPokemon = () => document.getElementById("input-link");
-const mainDiv = () => document.getElementById('main');
-const nameInput =  () => document.getElementById('name')
-const numberInput = () => document.getElementById('number')
-const regionInput = () => document.getElementById('region')
 
-//Events
+const homeLink = document.getElementById('home-page-link');
+const viewFavPokemonLink = document.getElementById('view-fav-pokemon');
+const inputPokemonLink = document.getElementById("input-link");
+const mainDiv = document.getElementById('main');
+const nameInput = document.getElementById('name')
+const numberInput = document.getElementById('number')
+const regionInput = document.getElementById('region')
+
+
 const homePageLinkEvent = () => {
-    homeLink().addEventListener('click', (e) => {
-        e.preventDefault();
+    homeLink.addEventListener('click', () => {
         renderHomePage();
     })
 }
 
 const viewFavPokemonLinkEvent = () => {
-    viewFavPokemonLink().addEventListener('click', (e) => {
-        e.preventDefault();
+    viewFavPokemonLink.addEventListener('click', () => {
         viewPokemon();
     })
 }
 
 const inputFavPokemonLinkEvent = () => {
-    inputPokemon().addEventListener('click', (e) => {
-        e.preventDefault();
+    inputPokemonLink.addEventListener('click', () => {
         loadPokemonForm();
 
     })
@@ -38,13 +35,13 @@ const submitFormEvent = e => {
     fetch(baseUrl + '/favorites', {
         method: "POST",
         headers: {
-            "Accept": "application/jason",
+            "Accept": "application/json",
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            name: nameInput().value,
-            number: numberInput().value,
-            region: regionInput().value
+            name: nameInput.value,
+            number: numberInput.value,
+            region: regionInput.value
         })
     })
     .then(resp => resp.json())
@@ -58,14 +55,14 @@ const submitFormEvent = e => {
 //Renders favorite Pokemon
 const viewPokemon =  async () => {
     await fetchPokemon();
-    mainDiv().innerHTML = ''
+    mainDiv.innerHTML = '';
     const h1 = document.createElement('h1')
     h1.innerText = "Favorite Pokemon: "
-    mainDiv().appendChild(h1)
+    mainDiv.appendChild(h1)
     pokemonAdded.forEach(pokemon => {
         const h4 = document.createElement('h4')
         h4.innerText = `${pokemon.name}`
-        mainDiv().appendChild(h4)
+        mainDiv.appendChild(h4)
     })
 
     
@@ -73,7 +70,7 @@ const viewPokemon =  async () => {
 
 //Load Pokemon Form 
 const loadPokemonForm = () => {
-    mainDiv().innerHTML = ''
+    mainDiv.innerHTML = ''
     const h1 = document.createElement('h1')
     const form = document.createElement('form')
     const nameDiv = document.createElement('div')
@@ -108,7 +105,7 @@ const loadPokemonForm = () => {
     submitButton.setAttribute('type', 'submit')
     submitButton.setAttribute('value', "Submit Pokemon")
 
-    h1.innerText = "Enter Pokemon Info: "
+    h1.innerText = "Enter Pokemon Info: ";
     nameLabel.innerText = "Name: ";
     numberLabel.innerText = "Number: ";
     regionLabel.innerText = "Region: ";
@@ -127,8 +124,8 @@ const loadPokemonForm = () => {
 
     form.addEventListener('submit', submitFormEvent);
 
-    mainDiv().appendChild(h1);
-    mainDiv().appendChild(form);
+    mainDiv.appendChild(h1);
+    mainDiv.appendChild(form);
 
 
 
@@ -137,7 +134,7 @@ const loadPokemonForm = () => {
 }
 
 
-//Fetch Request
+
 const fetchPokemon =  async () => {
     const resp = await fetch(baseUrl + '/favorites');
     const data = await resp.json();
@@ -148,11 +145,11 @@ const fetchPokemon =  async () => {
 
 //Renders Home Page
 const renderHomePage= () => {
-    mainDiv().innerHTML = '';
+    mainDiv.innerHTML = '';
     const h1 = document.createElement('h1');
     h1.classList.add('center-align');
     h1.innerText = "What are your favorite Pokemon?";
-    mainDiv().appendChild(h1);
+    mainDiv.appendChild(h1);
 }
 
 //When the DOM loads
