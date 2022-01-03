@@ -139,7 +139,7 @@ function fetchPokemon() {
     .then(pokemon => pokemonAdded = pokemon)
 }
 
-//Renders Home Page
+
 const renderHomePage = () => {
     mainDiv.innerHTML = '';
     const h1 = document.createElement('h1');
@@ -148,9 +148,9 @@ const renderHomePage = () => {
     mainDiv.appendChild(h1);
 }
 
-//When the DOM loads
+
 document.addEventListener('DOMContentLoaded', () => {
-    renderHomePage(); // removing this line makes the "What are your 3 favorite Pokemon? disappear"
+    renderHomePage(); 
     homePageLinkEvent();
     viewFavPokemonLinkEvent();
     inputFavPokemonLinkEvent();
