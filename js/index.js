@@ -1,14 +1,11 @@
-const baseUrl ='http://localhost:3000';
 let pokemonAdded = [];
-
-
 const homeLink = document.getElementById('home-page-link');
 const viewFavPokemonLink = document.getElementById('view-fav-pokemon');
 const inputPokemonLink = document.getElementById("input-link");
 const mainDiv = document.getElementById('main');
-const nameInput = document.getElementById('name')
-const numberInput = document.getElementById('number')
-const regionInput = document.getElementById('region')
+const nameInput = () => document.getElementById('name');
+const numberInput = () => document.getElementById('number');
+const regionInput = () => document.getElementById('region');
 
 
 const homePageLinkEvent = () => {
@@ -32,16 +29,18 @@ const inputFavPokemonLinkEvent = () => {
 
 const submitFormEvent = e => {
     e.preventDefault()
-    fetch(baseUrl + '/favorites', {
+    
+    
+    fetch('http://localhost:3000/favorites', {
         method: "POST",
         headers: {
             "Accept": "application/json",
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            name: nameInput.value,
-            number: numberInput.value,
-            region: regionInput.value
+            name: nameInput().value,
+            number: numberInput().value,
+            region: regionInput().value
         })
     })
     .then(resp => resp.json())
@@ -52,9 +51,9 @@ const submitFormEvent = e => {
     
 }
 
-//Renders favorite Pokemon
-const viewPokemon =  async () => {
-    await fetchPokemon();
+
+function viewPokemon()  {
+    fetchPokemon();
     mainDiv.innerHTML = '';
     const h1 = document.createElement('h1')
     h1.innerText = "Favorite Pokemon: "
@@ -68,7 +67,7 @@ const viewPokemon =  async () => {
     
 }
 
-//Load Pokemon Form 
+
 const loadPokemonForm = () => {
     mainDiv.innerHTML = ''
     const h1 = document.createElement('h1')
@@ -134,17 +133,14 @@ const loadPokemonForm = () => {
 }
 
 
-
-const fetchPokemon =  async () => {
-    const resp = await fetch(baseUrl + '/favorites');
-    const data = await resp.json();
-    pokemonAdded = data;
-    
+function fetchPokemon() {
+    fetch('http://localhost:3000/favorites')
+    .then(resp => resp.json())
+    .then(pokemon => pokemonAdded = pokemon)
 }
 
-
 //Renders Home Page
-const renderHomePage= () => {
+const renderHomePage = () => {
     mainDiv.innerHTML = '';
     const h1 = document.createElement('h1');
     h1.classList.add('center-align');
@@ -158,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     homePageLinkEvent();
     viewFavPokemonLinkEvent();
     inputFavPokemonLinkEvent();
+    viewPokemon();
     
     
     

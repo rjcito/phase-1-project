@@ -23,6 +23,42 @@
       "number": "007",
       "region": "Kanto",
       "id": 4
+    },
+    {
+      "name": "Quilava",
+      "number": "156",
+      "region": "Johto",
+      "id": 5
+    },
+    {
+      "name": "Squirtle",
+      "number": "007",
+      "region": "Kanto",
+      "id": 6
+    },
+    {
+      "name": "Squirtle",
+      "number": "007",
+      "region": "Kanto",
+      "id": 7
+    },
+    {
+      "name": "Squirtle",
+      "number": "007",
+      "region": "Kanto",
+      "id": 8
+    },
+    {
+      "name": "Squirtle",
+      "number": "007",
+      "region": "Kanto",
+      "id": 9
+    },
+    {
+      "name": "Cleffa",
+      "number": "173",
+      "region": "Johto",
+      "id": 10
     }
   ]
 }

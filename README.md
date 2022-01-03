@@ -16,3 +16,10 @@ Application to see other's favorite Pokemon and submit their own.
 *Click "Input Favorite Pokemon" button
 *Fill out form using keyboard
 *Hit Submit when finished, your pokemon will be added to the home page,
+
+### Starting db.json server
+*from terminal (make sure you are in the same directory as your project)
+*type "json-server --watch db.json"
+
+### Credits
+*form used from https://github.com/Enoch2k2/example-phase-1-project-1-flex/blob/create-meals/javascripts/index.js
